@@ -2,7 +2,7 @@
   <div class="layout">
     <Topnav class="nav" />
     <div class="content">
-      <aside>
+      <aside v-show="menuVisible">
         <h2>组件列表</h2>
         <ol>
           <li>
@@ -27,8 +27,16 @@
 </template>
 <script lang="ts">
   import Topnav from "../components/Topnav.vue";
+  import { inject, Ref } from "vue";
   export default {
     components: { Topnav },
+    setup(){
+      const menuVisible = inject<Ref<boolean>>('menuVisible') || {value: true}
+
+      return {
+        menuVisible
+      }
+    }
   };
 </script>
 <style lang="scss" scoped>
