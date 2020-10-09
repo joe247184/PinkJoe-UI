@@ -1,17 +1,17 @@
 <template>
   <div>
-    <Switch v-model:value="value"></Switch>
+    <rv-switch v-model:value="value"></rv-switch>
   </div>
 </template>
 
 <script lang="ts">
-  import Switch from "../lib/Switch.vue";
+  import rvSwitch from "../lib/Switch.vue";
   import { ref } from "vue";
 
   export default {
     name: "SwitchDemo",
     components: {
-      Switch
+      rvSwitch
     },
     setup() {
       const value = ref(false)
