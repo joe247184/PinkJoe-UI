@@ -1,12 +1,12 @@
 <template>
-  <button :class="{checked: value}" @click="toggleSwitch">
+  <button class="rv-switch" :class="{'rv-switch-checked': value}" @click="toggleSwitch">
     <span></span>
   </button>
 </template>
 
 <script lang="ts">
   export default {
-    name: "rvSwitch",
+    name: "RvSwitch",
     props: {
       value: {
         type: Boolean
@@ -24,12 +24,13 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+  @import 'common/variables.scss';
   $h: 22px;
   $h2: $h - 4px;
-  $active-color: #13ce66;
-  $un-active-color: #DCDFE6;
-  button {
+  $active-color: $color-success;
+  $un-active-color: $color-border-base;
+  .rv-switch {
     height: $h;
     width: $h * 2;
     border-radius: $h/2;
@@ -51,7 +52,7 @@
     transition: all .3s;
   }
 
-  button.checked {
+  .rv-switch.rv-switch-checked {
     background-color: $active-color;
     > span{
       left: calc(100% - #{$h2} - 2px);
