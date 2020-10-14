@@ -3,6 +3,8 @@
 * */
 import './lib/common/common.scss'
 import './index.scss'
+import './lib/common/iconfont'
+
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'

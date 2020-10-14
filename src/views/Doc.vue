@@ -20,7 +20,9 @@
         </ol>
       </aside>
       <main>
-        <router-view />
+        <div class="main-content">
+          <router-view />
+        </div>
       </main>
     </div>
   </div>
@@ -61,9 +63,12 @@
       flex-shrink: 0;
     }
     > main {
-      flex-grow: 1;
       padding: 16px;
-      background: lightgreen;
+      flex: 1;
+      .main-content{
+        max-width: 870px;
+        margin: 0 auto;
+      }
     }
   }
   aside {

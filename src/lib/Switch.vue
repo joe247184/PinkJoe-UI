@@ -38,18 +38,17 @@
     background-color: $un-active-color;
     position: relative;
     outline: none;
-  }
-
-  span {
-    height: $h2;
-    width: $h2;
-    background: white;
-    border-radius: 50%;
-    display: inline-block;
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    transition: all .3s;
+    & > span {
+      height: $h2;
+      width: $h2;
+      background: white;
+      border-radius: 50%;
+      display: inline-block;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      transition: all .3s;
+    }
   }
 
   .rv-switch.rv-switch-checked {
