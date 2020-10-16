@@ -1,6 +1,6 @@
 <template>
   <svg class="rv-icon" aria-hidden="true">
-    <use xlink:href="#icon-loading"></use>
+    <use :xlink:href="`#icon-${name}`"></use>
   </svg>
 </template>
 
@@ -8,7 +8,8 @@
   export default {
     name: "RvIcon",
     props: {
-      fill: String
+      fill: String,
+      name: String
     }
   }
 </script>

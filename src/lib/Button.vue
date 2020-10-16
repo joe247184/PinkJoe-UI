@@ -1,6 +1,6 @@
 <!--
   <rv-button
-    theme="primary | success | warning | danger | info | link | text",
+    theme="primary | success | warning | danger | info | text",
     size="medium | small | mini"
     round
     @click=""
@@ -11,37 +11,44 @@
 <template>
   <button
       class="rv-button"
+      :disabled="loading || disable"
       :class="[
           `rv-button-${theme}`,
           buttonSize ? 'rv-button-' + buttonSize : '',
           {
             'is-round': round,
-            'is-disable': disable
+            'is-disable': disable,
+            'is-loading': loading
           }
           ]">
-    <rv-icon v-if="loading"></rv-icon>
+    <rv-icon v-if="loading" name="loading"></rv-icon>
+    <rv-icon v-if="icon && !loading" :name="icon"></rv-icon>
     <span v-if="$slots.default"><slot></slot></span>
   </button>
 </template>
 
-<script>
-  import {computed} from "vue";
+<script lang="ts">
+  import {computed, PropType} from "vue";
   import RvIcon from "./Icon.vue";
+
+  type RButtonTheme = PropType<'primary' | 'success' | 'warning' | 'danger' | 'info' | 'text' | 'default'>
+  type RButtonSize = PropType<'medium' | 'small' | 'mini'>
 
   export default {
     name: "RvButton",
     components: {RvIcon},
     props:{
       theme: {
-        type: String,
+        type: String as RButtonTheme,
         default: 'default'
       },
-      size: String,
+      size: String as RButtonSize,
       round: Boolean,
       disable: Boolean,
-      loading: Boolean
+      loading: Boolean,
+      icon: String
     },
-    setup(props){
+    setup(props: { size: string; }){
       const buttonSize = computed(()=>{
         return props.size
       })
@@ -84,7 +91,6 @@
         }
       }
     }
-
   }
 
   @mixin rv-button-size($size) {
@@ -126,6 +132,26 @@
       border-radius: 20px;
     }
 
+    &.is-loading{
+      pointer-events: none;
+      position: relative;
+      &:before{
+        pointer-events: none;
+        content: "";
+        position: absolute;
+        left: -1px;
+        top: -1px;
+        right: -1px;
+        bottom: -1px;
+        border-radius: inherit;
+        background-color: hsla(0,0%,100%,.35);
+      }
+      > svg.rv-icon {
+        animation: rotating 2s linear infinite;
+        margin-right: 3px;
+      }
+    }
+
     &.is-disable,&.is-disable:hover,&.is-disable:focus{
       color: #c0c4cc;
       cursor: not-allowed;
@@ -154,15 +180,16 @@
       background: transparent;
       padding-left: 0;
       padding-right: 0;
-    }
-
-    &.rv-button-link{
-
-    }
-
-    > svg.rv-icon {
-      animation: rotating 2s linear infinite;
-      margin-right: 3px;
+      &.is-disable{
+        color: $color-placeholder;
+        border-color: transparent;
+        &:hover,&:focus{
+          color: $color-placeholder;
+          cursor: not-allowed;
+          background-image: none;
+          background-color: #fff;
+        }
+      }
     }
   }
   
