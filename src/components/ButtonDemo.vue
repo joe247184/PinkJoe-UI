@@ -1,8 +1,8 @@
 <template>
   <h1>Button 按钮</h1>
-  <p>常用的操作按钮。</p>
+  <p class="demo-block">常用的操作按钮。</p>
 
-  <section>
+  <section class="demo-block">
     <h2>基础用法</h2>
     <p>基础的按钮用法。</p>
 
@@ -34,7 +34,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="demo-block">
     <h2>不同尺寸</h2>
     <p>Button 组件提供除了默认值以外的三种尺寸，可以在不同场景下选择合适的按钮尺寸。</p>
 
@@ -56,7 +56,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="demo-block">
     <h2>禁用状态</h2>
     <p>按钮不可用状态。</p>
 
@@ -72,7 +72,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="demo-block">
     <h2>文字按钮</h2>
     <p>没有边框和背景色的按钮。</p>
 
@@ -84,7 +84,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="demo-block">
     <h2>加载中</h2>
     <p>点击按钮后进行数据加载操作，在按钮上显示加载状态。</p>
 
@@ -95,7 +95,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="demo-block">
     <h2>图标按钮</h2>
     <p>带图标的按钮可增强辨识度（有文字）或节省空间（无文字）。</p>
 
@@ -113,7 +113,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="demo-block">
     <h2>事件绑定</h2>
     <p>可以对按钮绑定 @click 事件</p>
 
@@ -147,26 +147,7 @@
 </script>
 
 <style lang="scss" scoped>
-  p{
-    margin: 15px 0;
-  }
-  section {
-    margin-top: 30px;
-    .source {
-      border: 1px solid #ebebeb;
-      border-radius: 3px;
-      padding: 24px;
-      > .rv-row {
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
-        &:last-child{
-          margin-bottom: 0;
-        }
-        button {
-          margin-right: 15px;
-        }
-      }
-    }
+  section.demo-block .source .rv-row button{
+    margin-right: 15px;
   }
 </style>
