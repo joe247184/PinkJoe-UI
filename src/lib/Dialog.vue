@@ -1,30 +1,37 @@
 <template>
-  <rv-overlay v-show="visible" @click.self="clickOverlay">
-    <div
-        class="rv-dialog"
-        :style="style"
-    >
-      <div class="rv-dialog-header">
-        <slot name="title">
-          <span class="rv-dialog-title">提示</span>
-        </slot>
-        <rv-button theme="text" style="color: #909399">
-          <rv-icon name="close" @click="close"></rv-icon>
-        </rv-button>
-      </div>
-      <div class="rv-dialog-body">
-        <slot></slot>
-      </div>
-      <div class="rv-dialog-footer">
-        <slot name="footer">
+  <teleport to="body">
+    <rv-overlay v-show="visible" @click.self="clickOverlay">
+      <div
+          class="rv-dialog"
+          :style="style"
+      >
+        <div class="rv-dialog-header">
+        <span class="rv-dialog-title">
+          <slot name="title">
+            {{title}}
+          </slot>
+        </span>
+          <rv-button theme="text" style="color: #909399">
+            <rv-icon name="close" @click="close"></rv-icon>
+          </rv-button>
+        </div>
+
+        <div class="rv-dialog-body">
+          <slot></slot>
+        </div>
+
+        <div class="rv-dialog-footer">
+          <slot name="footer">
           <span class="dialog-footer">
             <rv-button @click="cancel">取消</rv-button>
             <rv-button theme="primary" @click="handleOk">确定</rv-button>
           </span>
-        </slot>
+          </slot>
+        </div>
       </div>
-    </div>
-  </rv-overlay>
+    </rv-overlay>
+  </teleport>
+
 </template>
 
 <script lang="ts">
@@ -42,7 +49,11 @@
         type: Boolean,
         default: true
       },
-      width: String
+      width: String,
+      title: {
+        type: String,
+        default: '提示'
+      }
     },
     setup(props: any, context: SetupContext) {
       const style = computed(() => {

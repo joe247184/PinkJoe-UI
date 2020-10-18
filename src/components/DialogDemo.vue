@@ -14,6 +14,22 @@
         </rv-dialog>
       </div>
     </div>
+
+    <div class="meta">
+      <div class="description">
+        <div>
+          <p>需要设置<code>v-model:visible</code>，它接收<code>Boolean</code>，当为<code>true</code>时显示 Dialog。
+            Dialog 分为两个部分：
+            <code>body</code>和<code>footer</code>，<code>footer</code>需要具名为<code>footer</code>的<code>slot</code>。
+            <code>title</code>属性用于定义标题，它是可选的，默认值为空。
+          </p>
+        </div>
+      </div>
+      <div class="highlight">
+
+      </div>
+    </div>
+
   </section>
 
   <section class="demo-block">
@@ -50,11 +66,39 @@
       </div>
     </div>
   </section>
+
+  <section class="demo-block">
+    <h2>自定义页头和页脚</h2>
+    <p>可通过具名插槽
+      <code>&lt;template v-slot:title&gt;bla bla bla...&lt;/template&gt;</code>
+      以及
+      <code>&lt;template v-slot:footer&gt;bla bla bla...&lt;/template&gt;</code>
+      自定义页头和页脚。
+    </p>
+
+    <div class="source">
+      <div class="rv-row">
+        <rv-button theme="text" @click="openDialog4">点击打开自定义页头页脚 Dialog</rv-button>
+        <rv-dialog v-model:visible="dialogVisible4" @ok="onOk4">
+
+          <template v-slot:title>自定义页头</template>
+          <template v-slot:footer>
+            <rv-button @click="onOk4" style="margin-right: 15px">自定义按钮1</rv-button>
+            <rv-button theme="primary" @click="onOk4">自定义按钮2</rv-button>
+          </template>
+          <span>这是一段信息</span>
+        </rv-dialog>
+      </div>
+    </div>
+  </section>
+
+
+
 </template>
 
 <script lang="ts">
   import RvDialog from '../lib/Dialog.vue'
-  import { ref, Ref } from 'vue'
+  import {ref, Ref} from 'vue'
   import RvButton from "../lib/Button.vue";
   import RvIcon from "../lib/Icon.vue";
 
@@ -69,6 +113,7 @@
       const dialogVisible1 = ref(false)
       const dialogVisible2 = ref(false)
       const dialogVisible3 = ref(false)
+      const dialogVisible4 = ref(false)
 
       const open = (val: Ref<boolean>) => {
         val.value = true
@@ -99,10 +144,22 @@
       }
 
       const onOk3 = () => {
-        close(dialogVisible2)
+        close(dialogVisible3)
       }
 
-      return {dialogVisible1, dialogVisible2, dialogVisible3, openDialog1, openDialog2, openDialog3, onOk1, onOk2, onOk3}
+      const openDialog4 = () => {
+        open(dialogVisible4)
+      }
+
+      const onOk4 = () => {
+        close(dialogVisible4)
+      }
+
+      return {
+        dialogVisible1, dialogVisible2, dialogVisible3, dialogVisible4,
+        openDialog1, openDialog2, openDialog3, openDialog4,
+        onOk1, onOk2, onOk3, onOk4
+      }
     }
   }
 </script>
@@ -116,7 +173,8 @@
 
   .dialog-body {
     margin-top: 20px;
-    &.dialog-icon .rv-icon{
+
+    &.dialog-icon .rv-icon {
       font-size: 30px;
     }
   }
