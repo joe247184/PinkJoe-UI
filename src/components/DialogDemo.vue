@@ -92,7 +92,17 @@
     </div>
   </section>
 
+  <section class="demo-block">
+    <h2>代码打开 Dialog</h2>
+    <p>代码打开 Dialog</p>
 
+    <div class="source">
+      <div class="rv-row">
+        <rv-button theme="text" @click="openDialogByCode">点击代码打开 Dialog</rv-button>
+
+      </div>
+    </div>
+  </section>
 
 </template>
 
@@ -101,6 +111,7 @@
   import {ref, Ref} from 'vue'
   import RvButton from "../lib/Button.vue";
   import RvIcon from "../lib/Icon.vue";
+  import openDialog from '../lib/openDialog'
 
   export default {
     name: "DialogDemo",
@@ -155,10 +166,17 @@
         close(dialogVisible4)
       }
 
+      const openDialogByCode = () => {
+        openDialog({
+          title: '这是代码打开 Dialog',
+          content: 'hello'
+        })
+      }
+
       return {
         dialogVisible1, dialogVisible2, dialogVisible3, dialogVisible4,
         openDialog1, openDialog2, openDialog3, openDialog4,
-        onOk1, onOk2, onOk3, onOk4
+        onOk1, onOk2, onOk3, onOk4, openDialogByCode
       }
     }
   }

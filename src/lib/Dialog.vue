@@ -24,7 +24,8 @@
           <slot name="footer">
           <span class="dialog-footer">
             <rv-button @click="cancel">取消</rv-button>
-            <rv-button theme="primary" @click="handleOk">确定</rv-button>
+            <rv-button v-if="openByCode" theme="primary" @click="openByCodeClickOk">确定</rv-button>
+            <rv-button v-else theme="primary" @click="handleOk">确定</rv-button>
           </span>
           </slot>
         </div>
@@ -53,6 +54,14 @@
       title: {
         type: String,
         default: '提示'
+      },
+      openByCode: {
+        type: Boolean,
+        default: false
+      },
+      ok:{
+        type: Function,
+        default: ()=>{}
       }
     },
     setup(props: any, context: SetupContext) {
@@ -80,7 +89,12 @@
         props.closeOnclickOverlay && close()
       }
 
-      return {style, close, cancel, handleOk, clickOverlay}
+      const openByCodeClickOk = () => {
+        props.ok()
+        close()
+      }
+
+      return {style, close, cancel, handleOk, clickOverlay, openByCodeClickOk}
     }
   }
 </script>
