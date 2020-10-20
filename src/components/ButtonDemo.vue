@@ -127,14 +127,14 @@
 </template>
 
 <script>
-  import rvButton from '../lib/Button.vue'
+  import RvButton from '../lib/Button.vue'
   import RvIcon from "../lib/Icon.vue";
 
   export default {
     name: "ButtonDemo",
     components:{
       RvIcon,
-      rvButton
+      RvButton
     },
     setup(){
       const greeting = () => {
