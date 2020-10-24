@@ -1,10 +1,14 @@
 <template>
-  tab
+  <slot></slot>
 </template>
 
 <script lang="ts">
   export default {
-    name: "RvTabPane"
+    name: "RvTabPane",
+    props: {
+      label: String,
+      name: String,
+    }
   }
 </script>
 
