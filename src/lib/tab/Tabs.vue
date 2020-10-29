@@ -10,19 +10,21 @@
     </div>
 
     <div class="rv-tab__content">
-      <template v-for="tab in tabs">
-        <component :is="tab" v-if="tab.props.name === activeName"></component>
-      </template>
+      <component :is="current" :key="current.props.name"></component>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { SetupContext, provide, reactive, computed } from "vue";
+import { SetupContext, provide, reactive, computed, ref } from "vue";
 import RvTabPane from "./TabPane.vue";
 import RvTabNav from "./TabNav.vue";
 
 const types = ['default', 'card', 'border-card']
+
+const isDisabled = (props) => {
+  return props.hasOwnProperty('disabled') && props.disabled !== false
+}
 
 export default {
   name: "RvTabs",
@@ -40,6 +42,7 @@ export default {
     }
 
     const tabs = context.slots.default();
+    const disabledName = ref(null)
 
     tabs.forEach((val) => {
       if (val.type !== RvTabPane) {
@@ -47,21 +50,32 @@ export default {
       }
     });
 
-    const tabsProp = tabs.map((tab) => {
-      return { ...tab.props };
-    });
+    const current = computed(()=>{
+      return tabs.find(tab => tab.props.name === props.activeName)
+    })
+
+    const tabsProp = computed(()=>{
+      return tabs.map((tab) => {
+        if(isDisabled(tab.props)){
+          disabledName.value = tab.props.name
+        }
+        return { ...tab.props };
+      });
+    })
 
     provide('activeName', reactive(computed(()=>props.activeName)))
     provide('type', reactive(computed(()=> props.type)))
+    provide('disabledName', disabledName)
 
     const changeSelected = (name) => {
+      if(name === disabledName.value) return
       context.emit('update:activeName', name)
     }
 
     return {
-      tabs,
       tabsProp,
-      changeSelected
+      changeSelected,
+      current
     };
   }
 };

@@ -58,6 +58,25 @@
     </div>
   </section>
 
+  <section class="demo-block">
+    <h2>禁用</h2>
+    <p>禁用某一项。</p>
+
+    <div class="source">
+      <div class="rv-row">
+        <rv-tabs v-model:activeName="activeNameDisabled">
+          <rv-tab-pane label="用户管理" name="first">
+            <rv-icon name="Daytimemode"></rv-icon>
+            <span class="demo-tab">用户管理</span>
+          </rv-tab-pane>
+          <rv-tab-pane label="配置管理" name="second" disabled>配置管理</rv-tab-pane>
+          <rv-tab-pane label="角色管理" name="third">角色管理</rv-tab-pane>
+          <rv-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</rv-tab-pane>
+        </rv-tabs>
+      </div>
+    </div>
+  </section>
+
 </template>
 
 <script lang="ts">
@@ -76,8 +95,10 @@
 
       const activeNameTypeBorderCard = ref('first')
 
+      const activeNameDisabled = ref('first')
+
       return {
-        activeNameBasic, activeNameCustom, activeNameTypeBorderCard
+        activeNameBasic, activeNameCustom, activeNameTypeBorderCard, activeNameDisabled
       }
     }
   }

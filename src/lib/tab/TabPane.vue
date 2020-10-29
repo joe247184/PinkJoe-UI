@@ -8,6 +8,13 @@
     props: {
       label: String,
       name: String,
+      disabled: {
+        type: Boolean,
+        default: false
+      }
+    },
+    setup(props){
+
     }
   }
 </script>

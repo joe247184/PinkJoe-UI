@@ -2,7 +2,7 @@
   <div class="layout">
     <Topnav class="nav" />
     <div class="content">
-      <aside v-show="menuVisible">
+      <aside :class="{'visible': !menuVisible}">
         <h2>组件列表</h2>
         <ol>
           <li>
@@ -51,7 +51,7 @@
     > .content {
       flex-grow: 1;
       padding-top: 60px;
-      padding-left: 156px;
+      padding-left: 200px;
       @media (max-width: 500px) {
         padding-left: 0;
       }
@@ -73,12 +73,17 @@
   }
   aside {
     background: lightblue;
-    width: 150px;
+    width: 200px;
     position: fixed;
     top: 0;
     left: 0;
-    padding: 70px 16px 16px;
+    margin-top: 65px;
+    padding: 10px 16px 16px;
     height: 100%;
+    transition: transform .3s;
+    &.visible{
+      transform: translateX(-200px);
+    }
     > h2 {
       margin-bottom: 4px;
     }

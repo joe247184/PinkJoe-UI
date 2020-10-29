@@ -31,7 +31,6 @@
 
         if(items) {
           const tabs = tabFilter(items)
-
           let offset = 0
           let tabSize = 0
           let flag = true
@@ -41,19 +40,18 @@
               flag = false
               tabSize = tab.clientWidth
             }
-
             if(flag){
               offset += tab.clientWidth
               // tab之间的margin-right
               // offset += 32
             }
-
-            const transform = `translateX(${offset}px)`
-            style.width = tabSize + 'px'
-            style.transform = transform;
-            style.msTransform = transform;
-            style.webkitTransform = transform;
           })
+
+          const transform = `translateX(${offset}px)`
+          style.width = tabSize + 'px'
+          style.transform = transform;
+          style.msTransform = transform;
+          style.webkitTransform = transform;
         }
 
         return style

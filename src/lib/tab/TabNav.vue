@@ -10,7 +10,8 @@
     <div
         class="rv-tabs_item"
         :class="{
-          'is-active': activeName === tab.name
+          'is-active': activeName === tab.name,
+          'is-disabled': disabledName === tab.name
         }"
         v-for="tab in tabsProp"
         :key="tab.name"
@@ -27,10 +28,6 @@
   import {inject, ref} from 'vue'
   import RvTabBar from './TabBar.vue'
 
-  interface TabType {
-    type: string
-  }
-
   export default {
     name: "RvTabNav",
     components:{
@@ -46,10 +43,13 @@
     setup(props) {
       const activeName = inject('activeName')
       const type = inject('type')
+      const disabledName = inject('disabledName')
+
+      // 相当于 react 中的 useRef() 引用节点
       const tabNav = ref(null)
 
       return {
-        activeName, tabNav, type
+        activeName, tabNav, type, disabledName
       }
     },
   };
@@ -132,6 +132,11 @@
       &.is-active{
         color: $color-tab-bar-blue;
         background-color: #fff;
+      }
+
+      &.is-disabled, &.is-disabled:hover{
+        color: rgba(0,0,0,.25);
+        cursor: not-allowed;
       }
     }
   }
