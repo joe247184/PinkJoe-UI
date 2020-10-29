@@ -1,3 +1,9 @@
+<demo>
+  title:基本用法
+  $
+  subTitle:基本的用法。
+</demo>
+
 <template>
   <rv-switch v-model:value="value"></rv-switch>
 </template>

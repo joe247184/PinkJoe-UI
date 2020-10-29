@@ -3,13 +3,13 @@
   <p class="demo-block">表示两种相互对立的状态间的切换，多用于触发「开/关」。</p>
 
   <section class="demo-block">
-    <h2>基本用法</h2>
-    <p>基本的用法。</p>
+    <h2>{{switch1demo.__sourceCodeTitle}}</h2>
+    <p>{{switch1demo.__sourceCodeSubTitle}}</p>
 
     <div class="source">
       <div class="rv-row">
 <!--        <rv-switch v-model:value="value"></rv-switch>-->
-        <switch1demo></switch1demo>
+        <component :is="switch1demo" :key="switch1demo"></component>
       </div>
     </div>
 
@@ -18,7 +18,8 @@
         <div><p>绑定<code>v-model</code>到一个Boolean类型的变量。</p></div>
       </div>
       <div class="code">
-        <code>&lt;rv-switch v-model:value=&quot;value&quot;&gt;&lt;/rv-switch&gt;</code>
+<!--        Prism.highlight(code, Prism.languages.javascript, 'javascript');-->
+        <pre class="language-html" v-html="Prism.highlight(switch1demo.__sourceCode, Prism.languages.html, 'html')"></pre>
       </div>
     </div>
   </section>
@@ -28,16 +29,21 @@
   import rvSwitch from "../lib/Switch.vue";
   import switch1demo from './SwitchDoc/Switch1.demo.vue'
   import { ref } from "vue";
+  import 'prismjs'
+  import 'prismjs/themes/prism.css'
+
+  const Prism = (window as any).Prism
+  console.log(Prism)
 
   export default {
     name: "SwitchDemo",
     components: {
-      rvSwitch, switch1demo
+      rvSwitch
     },
     setup() {
       const value = ref(false)
 
-      return {value}
+      return {value, switch1demo, Prism}
     }
   }
 </script>
