@@ -2,35 +2,14 @@
   <h1>Dialog 对话框</h1>
   <p class="demo-block">在保留当前页面状态的情况下，告知用户并承载相关操作。</p>
 
-  <section class="demo-block">
-    <h2>基本用法</h2>
-    <p>Dialog 弹出一个对话框，适合需要定制性更大的场景。</p>
+  <!-- basic -->
+  <DemoBlock :component="dialog1demo">
+    需要设置<code>v-model:visible</code>，它接收<code>Boolean</code>，当为<code>true</code>时显示 Dialog。
+    Dialog 分为两个部分：
+    <code>body</code>和<code>footer</code>，<code>footer</code>需要具名为<code>footer</code>的<code>slot</code>。
+    <code>title</code>属性用于定义标题，它是可选的，默认值为空。
+  </DemoBlock>
 
-    <div class="source">
-      <div class="rv-row">
-        <rv-button theme="text" @click="openDialog1">点击打开 Dialog</rv-button>
-        <rv-dialog v-model:visible="dialogVisible1" @ok="onOk1" width="30%">
-          <span>这是一段信息</span>
-        </rv-dialog>
-      </div>
-    </div>
-
-    <div class="meta">
-      <div class="description">
-        <div>
-          <p>需要设置<code>v-model:visible</code>，它接收<code>Boolean</code>，当为<code>true</code>时显示 Dialog。
-            Dialog 分为两个部分：
-            <code>body</code>和<code>footer</code>，<code>footer</code>需要具名为<code>footer</code>的<code>slot</code>。
-            <code>title</code>属性用于定义标题，它是可选的，默认值为空。
-          </p>
-        </div>
-      </div>
-      <div class="highlight">
-
-      </div>
-    </div>
-
-  </section>
 
   <section class="demo-block">
     <h2>自定义内容</h2>
@@ -42,12 +21,12 @@
         <rv-button theme="text" @click="openDialog3">点击打开 Icon-Dialog</rv-button>
 
         <rv-dialog v-model:visible="dialogVisible2" @ok="onOk2">
-          <span>一堆按钮</span>
+          <span>一些按钮</span>
           <div class="rv-row dialog-body">
             <rv-button theme="primary">某按钮</rv-button>
-            <rv-button theme="info">某按钮</rv-button>
-            <rv-button theme="warning">某按钮</rv-button>
-            <rv-button theme="success">某按钮</rv-button>
+<!--            <rv-button theme="info">某按钮</rv-button>-->
+<!--            <rv-button theme="warning">某按钮</rv-button>-->
+<!--            <rv-button theme="success">某按钮</rv-button>-->
             <rv-button theme="primary" size="small" :loading="true">加载中</rv-button>
           </div>
         </rv-dialog>
@@ -113,6 +92,10 @@
   import RvIcon from "../lib/Icon.vue";
   import openDialog from '../lib/openDialog'
 
+  import dialog1demo from './DialogDoc/Dialog1.demo.vue'
+
+  console.log(dialog1demo)
+
   export default {
     name: "DialogDemo",
     components: {
@@ -176,7 +159,8 @@
       return {
         dialogVisible1, dialogVisible2, dialogVisible3, dialogVisible4,
         openDialog1, openDialog2, openDialog3, openDialog4,
-        onOk1, onOk2, onOk3, onOk4, openDialogByCode
+        onOk1, onOk2, onOk3, onOk4, openDialogByCode,
+        dialog1demo
       }
     }
   }

@@ -12,12 +12,17 @@ export default {
       const { code, path } = options
       const file = fs.readFileSync(path).toString()
       const parsed = baseParse(file).children.find(n => n.tag === 'demo')
+      const style = baseParse(file).children.find(n => n.tag === 'style')
       const content = parsed.children[0].content.split('$')
 
       const title = content[0].split(':')[1].trim()
       const subTitle = content[1].split(':')[1].trim()
 
-      const main = file.split(parsed.loc.source).join('').trim()
+      let main = file.split(parsed.loc.source).join('').trim()
+      if(style) {
+        main = main.split(style.loc.source).join('').trim()
+      }
+
       return `export default function (Component) {
         Component.__sourceCode = ${JSON.stringify(main)}
         Component.__sourceCodeTitle = ${JSON.stringify(title)}

@@ -4,9 +4,7 @@
     <p>{{component.__sourceCodeSubTitle}}</p>
 
     <div class="source">
-      <div class="rv-row">
-        <component :is="component" :key="component"></component>
-      </div>
+      <component :is="component" :key="component"></component>
     </div>
 
     <div class="meta">
@@ -16,7 +14,7 @@
         </p></div>
       </div>
       <div class="code">
-        <pre class="language-html" v-html="Prism.highlight(component.__sourceCode, Prism.languages.html, 'html')"></pre>
+        <pre class="language-html" v-html="html"></pre>
       </div>
     </div>
   </section>
@@ -25,6 +23,7 @@
 <script lang="ts">
   import 'prismjs'
   import 'prismjs/themes/prism.css'
+  import { computed } from 'vue'
 
   const Prism = (window as any).Prism
 
@@ -36,8 +35,11 @@
         require: true
       }
     },
-    setup() {
-      return {Prism}
+    setup(props) {
+      const html = computed(()=> {
+        return Prism.highlight(props.component.__sourceCode, Prism.languages.html, 'html')
+      })
+      return {Prism, html}
     }
   }
 </script>

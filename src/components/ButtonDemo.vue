@@ -2,133 +2,53 @@
   <h1>Button 按钮</h1>
   <p class="demo-block">常用的操作按钮。</p>
 
-  <section class="demo-block">
-    <h2>基础用法</h2>
-    <p>基础的按钮用法。</p>
+  <!-- basic -->
+  <DemoBlock :component="button1demo">
+    使用<code>theme</code>、<code>round</code>属性来定义 Button 的样式。
+  </DemoBlock>
 
-    <div class="source">
-      <!--  theme="primary | success | warning | danger | info | text"  -->
-      <div class="rv-row">
-        <rv-button>默认按钮</rv-button>
-        <rv-button theme="primary">主要按钮</rv-button>
-        <rv-button theme="success">成功按钮</rv-button>
-        <rv-button theme="warning">警告按钮</rv-button>
-        <rv-button theme="danger">危险按钮</rv-button>
-        <rv-button theme="info">信息按钮</rv-button>
-      </div>
+  <!-- size -->
+  <DemoBlock :component="button2demo">
+    额外的尺寸：<code>medium</code>、<code>small</code>、<code>mini</code>，通过设置size属性来配置它们。
+  </DemoBlock>
 
-      <div class="rv-row">
-        <rv-button round>默认按钮</rv-button>
-        <rv-button theme="primary" round>主要按钮</rv-button>
-        <rv-button theme="success" round>成功按钮</rv-button>
-        <rv-button theme="warning" round>警告按钮</rv-button>
-        <rv-button theme="danger" round>危险按钮</rv-button>
-        <rv-button theme="info" round>信息按钮</rv-button>
-      </div>
-    </div>
+  <!-- disabled -->
+  <DemoBlock :component="button3demo">
+    你可以使用<code>disabled</code>属性来定义按钮是否可用，它接受一个<code>Boolean</code>值。
+  </DemoBlock>
 
-    <div class="meta">
-      <div class="description">
-        <div><p>使用<code>theme</code>、<code>round</code>属性来定义 Button 的样式。</p></div>
-      </div>
-    </div>
-  </section>
+  <!-- text -->
+  <DemoBlock :component="button4demo">
+    设置<code>theme</code>属性为<code>text</code>值。
+  </DemoBlock>
 
-  <section class="demo-block">
-    <h2>不同尺寸</h2>
-    <p>Button 组件提供除了默认值以外的三种尺寸，可以在不同场景下选择合适的按钮尺寸。</p>
+  <!-- loading -->
+  <DemoBlock :component="button5demo">
+    要设置为 loading 状态，只要设置<code>loading</code>属性为<code>true</code>即可。
+  </DemoBlock>
 
-    <div class="source">
-      <!--  size="medium | small | mini"  -->
-      <div class="rv-row">
-        <rv-button>默认按钮</rv-button>
-        <rv-button size="medium">中等按钮</rv-button>
-        <rv-button size="small">小型按钮</rv-button>
-        <rv-button size="mini">超小按钮</rv-button>
-      </div>
+  <!-- icon-button -->
+  <DemoBlock :component="button6demo">
+    设置<code>icon</code>属性即可，也可以设置在文字右边的 icon ，只要使用<code>rv-icon</code>标签即可，可以使用自定义图标。
+  </DemoBlock>
 
-      <div class="rv-row">
-        <rv-button round>默认按钮</rv-button>
-        <rv-button size="medium" round>中等按钮</rv-button>
-        <rv-button size="small" round>小型按钮</rv-button>
-        <rv-button size="mini" round>超小按钮</rv-button>
-      </div>
-    </div>
-  </section>
-
-  <section class="demo-block">
-    <h2>禁用状态</h2>
-    <p>按钮不可用状态。</p>
-
-    <div class="source">
-      <div class="rv-row">
-        <rv-button disable>默认按钮</rv-button>
-        <rv-button theme="primary" disable>主要按钮</rv-button>
-        <rv-button theme="success" disable>成功按钮</rv-button>
-        <rv-button theme="warning" disable>警告按钮</rv-button>
-        <rv-button theme="danger" disable>危险按钮</rv-button>
-        <rv-button theme="info" disable>信息按钮</rv-button>
-      </div>
-    </div>
-  </section>
-
-  <section class="demo-block">
-    <h2>文字按钮</h2>
-    <p>没有边框和背景色的按钮。</p>
-
-    <div class="source">
-      <div class="rv-row">
-        <rv-button theme="text">文字按钮</rv-button>
-        <rv-button theme="text" disable>文字按钮</rv-button>
-      </div>
-    </div>
-  </section>
-
-  <section class="demo-block">
-    <h2>加载中</h2>
-    <p>点击按钮后进行数据加载操作，在按钮上显示加载状态。</p>
-
-    <div class="source">
-      <div class="rv-row">
-        <rv-button theme="primary" :loading="true">加载中</rv-button>
-      </div>
-    </div>
-  </section>
-
-  <section class="demo-block">
-    <h2>图标按钮</h2>
-    <p>带图标的按钮可增强辨识度（有文字）或节省空间（无文字）。</p>
-
-    <div class="source">
-      <div class="rv-row">
-        <rv-button theme="primary" icon="pic"></rv-button>
-        <rv-button theme="primary" icon="seleted"></rv-button>
-        <rv-button theme="primary" icon="share"></rv-button>
-        <rv-button theme="primary" icon="search">搜索</rv-button>
-        <rv-button theme="primary">
-          保存
-          <rv-icon name="save-fill"></rv-icon>
-        </rv-button>
-      </div>
-    </div>
-  </section>
-
-  <section class="demo-block">
-    <h2>事件绑定</h2>
-    <p>可以对按钮绑定 @click 事件</p>
-
-    <div class="source">
-      <div class="rv-row">
-        <rv-button theme="primary" @click="greeting">greeting</rv-button>
-      </div>
-    </div>
-  </section>
+  <!-- event -->
+  <DemoBlock :component="button7demo">
+    添加<code>@click</code>，事件将会直接绑定在原生 button 上。
+  </DemoBlock>
 
 </template>
 
 <script>
   import RvButton from '../lib/Button.vue'
   import RvIcon from "../lib/Icon.vue";
+  import button1demo from "./ButtonDoc/Button1.demo.vue";
+  import button2demo from "./ButtonDoc/Button2.demo.vue";
+  import button3demo from './ButtonDoc/Button3.demo.vue';
+  import button4demo from './ButtonDoc/Button4.demo.vue';
+  import button5demo from './ButtonDoc/Button5.demo.vue';
+  import button6demo from './ButtonDoc/Button6.demo.vue';
+  import button7demo from './ButtonDoc/Button7.demo.vue';
 
   export default {
     name: "ButtonDemo",
@@ -141,7 +61,7 @@
         alert('hi!!')
       }
 
-      return {greeting}
+      return {greeting, button1demo, button2demo, button3demo, button4demo, button5demo, button6demo, button7demo}
     }
   }
 </script>

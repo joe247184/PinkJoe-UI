@@ -5,7 +5,9 @@
 </demo>
 
 <template>
-  <rv-switch v-model:value="value"></rv-switch>
+  <div class="rv-row">
+    <rv-switch v-model:value="value"></rv-switch>
+  </div>
 </template>
 
 <script lang="ts">
