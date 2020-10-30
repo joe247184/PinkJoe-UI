@@ -39,6 +39,8 @@
   import RvOverlay from "./Overlay.vue";
   import RvIcon from "./Icon.vue";
   import RvButton from './Button.vue'
+  import './common/common.scss'
+
   import { SetupContext, computed } from "vue";
 
   export default {

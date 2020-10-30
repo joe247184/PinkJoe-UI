@@ -6,9 +6,10 @@
       </svg>
       <span>Raven UI</span>
     </div>
-    <ul class="menu">
-      <li>菜单1</li>
-      <li>菜单2</li>
+    <ul class="menu" v-if="!headerBack">
+      <li>
+        <router-link to="/doc/intro">文档</router-link>
+      </li>
     </ul>
     <span class="toggleAside" @click="toggleMenuVisible" v-if="headerBack">
       <svg class="icon" aria-hidden="true">
@@ -82,6 +83,14 @@
       flex-wrap: nowrap;
       > li {
         margin: 0 1em;
+        a {
+          color: #091841;
+          font-size: 20px;
+          &:hover {
+            text-decoration: none;
+            border-bottom: none;
+          }
+        }
       }
     }
     > .toggleAside {

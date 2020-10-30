@@ -4,7 +4,10 @@
   </svg>
 </template>
 
-<script>
+<script lang="ts">
+  import './common/iconfont'
+  import './common/common.scss'
+
   export default {
     name: "RvIcon",
     props: {

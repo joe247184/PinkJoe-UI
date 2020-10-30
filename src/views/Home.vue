@@ -6,7 +6,7 @@
         <h1 class="title">Raven UI</h1>
         <h2 class="description">一个基于Vue3的 UI 框架</h2>
         <p class="actions">
-          <router-link to="/doc" class="btn-start">开始体验</router-link>
+          <router-link to="/doc/get-started" class="btn-start">开始体验</router-link>
           <a href="https://github.com" class="btn-github">GitHub</a>
         </p>
       </div>

@@ -45,7 +45,8 @@ export default {
     const disabledName = ref(null)
 
     tabs.forEach((val) => {
-      if (val.type !== RvTabPane) {
+      // @ts-ignore
+      if (val.type.name !== RvTabPane.name) {
         throw new Error("rv-tabs 子元素必须是 rv-tab-pane");
       }
     });

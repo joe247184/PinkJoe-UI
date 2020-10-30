@@ -12,7 +12,6 @@
 
 <script>
   import rvButton from '../../lib/Button.vue'
-  import {ref} from "vue";
   import openDialog from "../../lib/openDialog";
 
   export default {
@@ -21,8 +20,6 @@
       rvButton
     },
     setup(){
-      const dialogVisible = ref(false)
-
       const openDialogByCode = () => {
         openDialog({
           title: '这是代码打开 Dialog',

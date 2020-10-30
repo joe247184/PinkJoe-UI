@@ -4,7 +4,7 @@
 然后在你的代码中写入下面的代码
 
 ```
-import {Button, Tabs, Tab, Switch, Dialog, openDialog} from "gulu-ui-1"
+import {rvButton, rvTabs, rvTab, rvSwitch, rvDialog, openDialog} from "ravenui"
 ```
 
 就可以使用我提供的组件了。
@@ -16,13 +16,13 @@ import {Button, Tabs, Tab, Switch, Dialog, openDialog} from "gulu-ui-1"
 ```
 <template>
   <div>
-    <Button>按钮</Button>
+    <rv-button>按钮</rv-button>
   </div>
 </template>
 <script>
-import {Button, Tabs, Tab, Switch, Dialog, openDialog} from "gulu-ui-1"
+import {rvButton, rvTabs, rvTab, rvSwitch, rvDialog, openDialog} from "ravenui"
 export default {
-  components: {Button}
+  components: {rvButton}
 }
 </script>
 ```

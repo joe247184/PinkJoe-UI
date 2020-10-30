@@ -108,7 +108,8 @@
       > li {
         > a {
           display: block;
-          padding: 4px 0 4px 2rem;
+          padding: 5px 0 5px 2rem;
+          font-size: 16px;
           border-left: 4px solid transparent;
           &:hover, &:focus {
             outline: none;
