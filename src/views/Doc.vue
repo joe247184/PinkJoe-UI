@@ -94,7 +94,7 @@
     transition: transform .3s;
     border-right: 1px solid #eaecef;
     background: #ffffff;
-    z-index: 1;
+    z-index: 6;
     &.visible{
       transform: translateX(-200px);
     }

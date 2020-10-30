@@ -25,6 +25,8 @@ const openDialog = (options: any) => {
               }
             }
           },
+          // 第三个参数传入对象表插槽
+          // https://vue3js.cn/docs/zh/guide/render-function.html#h-%E5%8F%82%E6%95%B0
           {
             default: content, title
           }
@@ -36,39 +38,3 @@ const openDialog = (options: any) => {
 }
 
 export default openDialog
-
-
-/*
-*
-import Dialog from "./Dialog.vue";
-import { createApp, h } from "vue";
-export const openDialog = (options) => {
-  const { title, content, ok, cancel } = options;
-  const div = document.createElement("div");
-  document.body.appendChild(div);
-  const close = () => {
-    app.unmount(div);
-    div.remove();
-  };
-  const app = createApp({
-    render() {
-      return h(
-        Dialog,
-        {
-          visible: true,
-          "onUpdate:visible": (newVisible) => {
-            if (newVisible === false) {
-              close();
-            }
-          },
-          ok, cancel
-        },
-        {
-          title,
-          content,
-        }
-      );
-    },
-  });
-  app.mount(div);
-};*/

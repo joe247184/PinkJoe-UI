@@ -2,103 +2,39 @@
   <h1>Tabs 标签页</h1>
   <p class="demo-block">分隔内容上有关联但属于不同类别的数据集合。</p>
 
-  <section class="demo-block">
-    <h2>基础用法</h2>
-    <p>基础的、简洁的标签页。</p>
+  <!-- basic -->
+  <DemoBlock :component="tab1demo">
+    Tabs 组件提供了选项卡功能，通过<code>v-model</code>传入表示当前页的<code>name</code>的变量，
+    给定初始选中标签页的名称是必须的，否则会报错哟。
+  </DemoBlock>
 
-    <div class="source">
-      <div class="rv-row">
-        <rv-tabs v-model:activeName="activeNameBasic">
-          <rv-tab-pane label="用户管理" name="first">
-            <div class="demo-tab"><rv-icon name="reeor-fill"></rv-icon>用户管理</div>
-          </rv-tab-pane>
-          <rv-tab-pane label="配置管理" name="second">配置管理</rv-tab-pane>
-          <rv-tab-pane label="角色管理" name="third">角色管理</rv-tab-pane>
-          <rv-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</rv-tab-pane>
-        </rv-tabs>
-      </div>
-    </div>
-  </section>
+  <!-- type card -->
+  <DemoBlock :component="tab2demo">
+    只需要设置 <code>type</code> 属性为 <code>card</code> 就可以使选项卡改变为标签风格。
+  </DemoBlock>
 
-  <section class="demo-block">
-    <h2>选项卡样式</h2>
-    <p>选项卡样式的标签页。</p>
+  <!-- type border-card -->
+  <DemoBlock :component="tab3demo">
+    设置 <code>type</code> 属性为 <code>border-card</code> 。
+  </DemoBlock>
 
-    <div class="source">
-      <div class="rv-row">
-        <rv-tabs v-model:activeName="activeNameCustom" type="card">
-          <rv-tab-pane label="用户管理" name="first">
-              <rv-icon name="Daytimemode"></rv-icon>
-              <span class="demo-tab">用户管理</span>
-          </rv-tab-pane>
-          <rv-tab-pane label="配置管理" name="second">配置管理</rv-tab-pane>
-          <rv-tab-pane label="角色管理" name="third">角色管理</rv-tab-pane>
-          <rv-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</rv-tab-pane>
-        </rv-tabs>
-      </div>
-    </div>
-  </section>
-
-  <section class="demo-block">
-    <h2>卡片化</h2>
-    <p>卡片化的标签页。</p>
-
-    <div class="source">
-      <div class="rv-row">
-        <rv-tabs v-model:activeName="activeNameTypeBorderCard" type="border-card">
-          <rv-tab-pane label="用户管理" name="first">
-            <rv-icon name="Daytimemode"></rv-icon>
-            <span class="demo-tab">用户管理</span>
-          </rv-tab-pane>
-          <rv-tab-pane label="配置管理" name="second">配置管理</rv-tab-pane>
-          <rv-tab-pane label="角色管理" name="third">角色管理</rv-tab-pane>
-          <rv-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</rv-tab-pane>
-        </rv-tabs>
-      </div>
-    </div>
-  </section>
-
-  <section class="demo-block">
-    <h2>禁用</h2>
-    <p>禁用某一项。</p>
-
-    <div class="source">
-      <div class="rv-row">
-        <rv-tabs v-model:activeName="activeNameDisabled">
-          <rv-tab-pane label="用户管理" name="first">
-            <rv-icon name="Daytimemode"></rv-icon>
-            <span class="demo-tab">用户管理</span>
-          </rv-tab-pane>
-          <rv-tab-pane label="配置管理" name="second" disabled>配置管理</rv-tab-pane>
-          <rv-tab-pane label="角色管理" name="third">角色管理</rv-tab-pane>
-          <rv-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</rv-tab-pane>
-        </rv-tabs>
-      </div>
-    </div>
-  </section>
-
+  <!-- disabled -->
+  <DemoBlock :component="tab4demo">
+    设置 <code>type</code> 属性为 <code>border-card</code> 。
+  </DemoBlock>
 </template>
 
 <script lang="ts">
-  import RvTabs from "../lib/tab/Tabs.vue";
-  import RvTabPane from "../lib/tab/TabPane.vue";
-  import { ref } from "vue";
-  import RvIcon from '../lib/Icon.vue'
+  import tab1demo from './TabDoc/Tab1.demo.vue'
+  import tab2demo from './TabDoc/Tab2.demo.vue'
+  import tab3demo from './TabDoc/Tab3.demo.vue'
+  import tab4demo from './TabDoc/Tab4.demo.vue'
 
   export default {
     name: "TabsDemo",
-    components: {RvTabPane, RvTabs,RvIcon},
     setup(){
-      const activeNameBasic = ref('second')
-
-      const activeNameCustom = ref('first')
-
-      const activeNameTypeBorderCard = ref('first')
-
-      const activeNameDisabled = ref('first')
-
       return {
-        activeNameBasic, activeNameCustom, activeNameTypeBorderCard, activeNameDisabled
+        tab1demo, tab2demo, tab3demo, tab4demo
       }
     }
   }

@@ -10,7 +10,7 @@
       <li>菜单1</li>
       <li>菜单2</li>
     </ul>
-    <span class="toggleAside" @click="toggleMenuVisible">
+    <span class="toggleAside" @click="toggleMenuVisible" v-if="headerBack">
       <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-menu"></use>
       </svg>
