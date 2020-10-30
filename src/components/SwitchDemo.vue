@@ -2,48 +2,25 @@
   <h1>Switch 开关</h1>
   <p class="demo-block">表示两种相互对立的状态间的切换，多用于触发「开/关」。</p>
 
-  <section class="demo-block">
-    <h2>{{switch1demo.__sourceCodeTitle}}</h2>
-    <p>{{switch1demo.__sourceCodeSubTitle}}</p>
-
-    <div class="source">
-      <div class="rv-row">
-<!--        <rv-switch v-model:value="value"></rv-switch>-->
-        <component :is="switch1demo" :key="switch1demo"></component>
-      </div>
-    </div>
-
-    <div class="meta">
-      <div class="description">
-        <div><p>绑定<code>v-model</code>到一个Boolean类型的变量。</p></div>
-      </div>
-      <div class="code">
-<!--        Prism.highlight(code, Prism.languages.javascript, 'javascript');-->
-        <pre class="language-html" v-html="Prism.highlight(switch1demo.__sourceCode, Prism.languages.html, 'html')"></pre>
-      </div>
-    </div>
-  </section>
+  <demo-block :component="switch1demo">
+    使用<code>theme</code>、<code>round</code>属性来定义 Button 的样式。
+  </demo-block>
 </template>
 
 <script lang="ts">
   import rvSwitch from "../lib/Switch.vue";
   import switch1demo from './SwitchDoc/Switch1.demo.vue'
-  import { ref } from "vue";
-  import 'prismjs'
-  import 'prismjs/themes/prism.css'
+  import DemoBlock from "./common/DemoBlock.vue";
 
-  const Prism = (window as any).Prism
-  console.log(Prism)
+  console.log(switch1demo)
 
   export default {
     name: "SwitchDemo",
     components: {
-      rvSwitch
+      rvSwitch, DemoBlock
     },
     setup() {
-      const value = ref(false)
-
-      return {value, switch1demo, Prism}
+      return {switch1demo}
     }
   }
 </script>
