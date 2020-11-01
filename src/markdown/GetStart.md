@@ -8,8 +8,6 @@ import {RvButton, RvTabs, RvTab, RvSwitch, RvDialog, openDialog} from "raven-ui"
 import "raven-ui/dist/lib/ravenui.css";
 ```
 
-就可以使用我提供的组件了。
-
 ## Vue 单文件组件
 
 代码示例：
