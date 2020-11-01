@@ -74,6 +74,8 @@
   }
 
   .rv-tabs__nav{
+    /* 解决 tab 文字自动局长问题 */
+    text-align: left;
     &:not(.rv-tabs-type)::after{
       content: '';
       position: absolute;

@@ -84,6 +84,7 @@ export default {
 
 <style lang="scss">
   .rv-tabs{
+    text-align: left;
     width: 100%;
     background-color: #ffffff;
     &.rv-tabs-type__card-border{

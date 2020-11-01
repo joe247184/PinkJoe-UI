@@ -4,7 +4,8 @@
 然后在你的代码中写入下面的代码
 
 ```
-import {rvButton, rvTabs, rvTab, rvSwitch, rvDialog, openDialog} from "ravenui"
+import {RvButton, RvTabs, RvTab, RvSwitch, RvDialog, openDialog} from "raven-ui"
+import "raven-ui/dist/lib/ravenui.css";
 ```
 
 就可以使用我提供的组件了。
@@ -15,14 +16,15 @@ import {rvButton, rvTabs, rvTab, rvSwitch, rvDialog, openDialog} from "ravenui"
 
 ```
 <template>
-  <div>
     <rv-button>按钮</rv-button>
-  </div>
 </template>
+
 <script>
-import {rvButton, rvTabs, rvTab, rvSwitch, rvDialog, openDialog} from "ravenui"
+import {RvButton, RvTabs, RvTab, RvSwitch, RvDialog, openDialog} from "raven-ui"
+import "raven-ui/dist/lib/ravenui.css";
+
 export default {
-  components: {rvButton}
+  components: {RvButton}
 }
 </script>
 ```

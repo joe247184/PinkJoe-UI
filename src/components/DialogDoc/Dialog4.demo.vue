@@ -12,7 +12,7 @@
 
 <script>
   import rvButton from '../../lib/Button.vue'
-  import openDialog from "../../lib/openDialog";
+  import {openDialog} from "../../lib/openDialog";
 
   export default {
     name: "Dialog1.demo",
