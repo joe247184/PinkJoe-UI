@@ -41,11 +41,21 @@
 </template>
 <script lang="ts">
   import Topnav from "../components/Topnav.vue";
-  import { inject, Ref } from "vue";
+  import { inject, Ref, computed, watch } from "vue";
+  import router from "../router";
   export default {
     components: { Topnav },
     setup(){
       const menuVisible = inject<Ref<boolean>>('menuVisible') || {value: true}
+
+      const currentRoute = computed(()=> {
+        return router.currentRoute.value.fullPath
+      })
+
+      watch(currentRoute, () => {
+        window.scrollTo(0,0)
+      })
+
       return {
         menuVisible
       }

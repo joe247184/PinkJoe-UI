@@ -47,7 +47,6 @@
 </script>
 <style lang="scss" scoped>
   .home{
-
     .top {
       background: linear-gradient(145deg, rgba(2,0,36,1) 0%, rgba(234,240,249,1) 0%, rgba(221,231,246,1) 100%);
       .banner {
