@@ -1,6 +1,6 @@
 {
   "name": "raven-ui",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "files": ["dist/lib/*"],
   "main": "dist/lib/ravenui.js",
   "scripts": {

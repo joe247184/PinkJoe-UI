@@ -1,24 +1,74 @@
 <template>
-  <button class="rv-switch" :class="{'rv-switch-checked': value}" @click="toggleSwitch">
+  <button
+      class="rv-switch"
+      :class="{
+        'rv-switch-checked': value,
+        'rv-switch-disabled': disabled
+      }"
+      :style="style"
+      @click="toggleSwitch"
+      ref="switchCore"
+  >
     <span></span>
   </button>
 </template>
 
 <script lang="ts">
+  import {computed, onMounted, ref, watch} from 'vue'
+
   export default {
     name: "RvSwitch",
     props: {
       value: {
         type: Boolean
+      },
+      disabled: {
+        type: Boolean,
+        default: false
+      },
+      activeColor: {
+        type: String,
+        default: ''
+      },
+      inactiveColor: {
+        type: String,
+        default: ''
+      },
+      width: {
+        type: String,
+        default: ''
       }
     },
-    setup(props: { value: Boolean | String; }, context: { emit: (arg0: string, arg1: boolean) => void }){
+    setup(props, context: { emit: (arg0: string, arg1: boolean) => void }){
+      const checked = computed(()=>props.value)
+      const switchCore = ref(null)
+      let style = {} as CSSStyleDeclaration
+
       const toggleSwitch = () => {
+        if(props.disabled) return
         context.emit('update:value', !props.value)
       }
 
+      const setBackgroundColor = () => {
+        switchCore.value.style.backgroundColor = props.value ? props.activeColor : props.inactiveColor
+      }
+
+      if(props.width) {
+        style.width = props.width
+      }
+
+      onMounted(()=>{
+        setBackgroundColor()
+
+        watch(checked, () => {
+          setBackgroundColor()
+        })
+      })
+
       return {
-        toggleSwitch
+        toggleSwitch,
+        switchCore,
+        style
       }
     }
   }
@@ -49,12 +99,15 @@
       left: 2px;
       transition: all .3s;
     }
-  }
-
-  .rv-switch.rv-switch-checked {
-    background-color: $active-color;
-    > span{
-      left: calc(100% - #{$h2} - 2px);
+    &.rv-switch-checked{
+      background-color: $active-color;
+      > span{
+        left: calc(100% - #{$h2} - 2px);
+      }
+    }
+    &.rv-switch-disabled{
+      cursor: not-allowed;
+      opacity: .6;
     }
   }
 

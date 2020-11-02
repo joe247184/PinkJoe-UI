@@ -1,5 +1,14 @@
+<demo>
+  title:禁用状态
+  $
+  subTitle:禁用状态下的组件。
+</demo>
+
 <template>
-  <rv-switch v-model:value="value"></rv-switch>
+  <div class="rv-row">
+    <rv-switch v-model:value="valueUnchecked" disabled></rv-switch>
+    <rv-switch v-model:value="valueChecked" disabled></rv-switch>
+  </div>
 </template>
 
 <script lang="ts">
@@ -7,14 +16,15 @@
   import { ref } from "vue";
 
   export default {
-    name: "Switch1.demo",
+    name: "Switch2.demo",
     components: {
       rvSwitch
     },
     setup() {
-      const value = ref(false)
+      const valueChecked = ref(true)
+      const valueUnchecked = ref(false)
 
-      return {value}
+      return {valueChecked, valueUnchecked}
     }
   }
 </script>
