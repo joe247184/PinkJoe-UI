@@ -1,7 +1,7 @@
-# Raven UI
+# PinkJoe-UI
 一个基于 Vue3 / TypeScript 开发的UI库
 
-预览地址：http://haowenren.gitee.io/ravenui-website/index.html
+预览地址：http://alibaba_9_1839745911.gitee.io/pinkjoe-ui
 
 ## 特别说明
 这款组件库其实是我为了学习`vue3`以及巩固自己知识而写。
